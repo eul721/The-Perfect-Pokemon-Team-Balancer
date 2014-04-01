@@ -1,0 +1,29 @@
+{
+  "name": "The-Perfect-Pokemon-Team-Balancer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.5.0",
+    "jade": "*",
+    "request": "^2.34.0"
+  },
+  "description": "The-Perfect-Pokemon-Team-Balancer",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shiora/The-Perfect-Pokemon-Team-Balancer.git"
+  },
+  "keywords": [
+    "pokemon",
+    "node"
+  ],
+  "author": "Jacky Chao",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/shiora/The-Perfect-Pokemon-Team-Balancer/issues"
+  },
+  "homepage": "https://github.com/shiora/The-Perfect-Pokemon-Team-Balancer"
+}
