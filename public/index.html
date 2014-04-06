@@ -1,0 +1,25 @@
+<html ng-app="PokemonTeamRater">
+<head>
+	<script src="libs/angular.js"></script>
+	<script src="js/controllers.js"></script>
+</head>
+
+<body ng-controller="Pokes">
+<form name="team">
+	<ul>
+		<li ng-repeat="n in pokes">
+			<label for="poke{{$index+1}}">Pokemon {{n.name}} : </label> <input type="text" name="poke1" ng-model="n.name"  ng-blur="test($index)" ng-change="change($index)"> 
+		</li>
+	</ul>
+</form>	
+<div>
+	<ul>
+		<li ng-repeat="n in pokes">
+			{{n.name}}
+		</li>
+	</ul>
+</span>	
+
+</body>
+	
+</html>

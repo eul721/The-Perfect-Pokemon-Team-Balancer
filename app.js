@@ -30,8 +30,9 @@ if ('development' == app.get('env')) {
 }
 
 //routes
-app.get('/', routes.index); //info page, landing page etc.
+//app.get('/', routes.index); //info page, landing page etc.
 app.get('/pokemon/:id',pokemon.getPokemon); //this is a proxy that collects pokemon data from PokeAPI. It will show pokedex and pokemon data
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
