@@ -54,6 +54,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-express-server');
 
-	grunt.registerTask('server',['concat:angular','express:dev','watch']);
+	grunt.registerTask('default',['concat:angular','express:dev','watch']);
 	
 };

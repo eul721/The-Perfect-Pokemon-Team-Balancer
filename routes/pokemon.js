@@ -1,4 +1,9 @@
 var request = require('request');
+var sqlite = require('sqlite3').verbose();
+var path = require('path');
+var db = new sqlite.Database(path.join(__dirname , '../libs/pokedex.sqlite'));
+
+
 /*	
  * This file is dedicated to all pokemon related calls
  */
@@ -17,7 +22,14 @@ var request = require('request');
  }
 
  exports.getPokemon = function(req,res){
-
+ 	console.log(db);
+ 	db.serialize(function(){
+ 		db.get("SELECT * FROM abilities;",function(err,row){
+ 			if (err) console.error('Error' + err);
+ 			console.log(row);
+ 		});
+ 	})
+ 	
  	getPokemonData(req.params.id,function(err,pokemon){
  		res.json(pokemon);
  	})

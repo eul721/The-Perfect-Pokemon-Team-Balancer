@@ -1,0 +1,1 @@
+@"C:\Users\Jacky\Programming Projects\node_js\The-Perfect-Pokemon-Team-Balancer\libs\env\Scripts\python.exe" "C:\Users\Jacky\Programming Projects\node_js\The-Perfect-Pokemon-Team-Balancer\libs\env\Scripts\markdown_py" %*
