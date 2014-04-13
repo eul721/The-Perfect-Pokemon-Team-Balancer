@@ -1,25 +1,38 @@
+<!DOCTYPE html>
 <html ng-app="PokemonTeamRater">
 <head>
 	<script src="libs/angular.js"></script>
+	<script src="libs/angular-bootstrap-tpls.js"></script>
 	<script src="js/controllers.js"></script>
+	<link href="stylesheets/bootstrap.css" rel="stylesheet">
 </head>
 
 <body ng-controller="Pokes">
-<form name="team">
-	<ul>
-		<li ng-repeat="n in pokes">
-			<label for="poke{{$index+1}}">Pokemon {{n.name}} : </label> <input type="text" name="poke1" ng-model="n.name"  ng-blur="test($index)" ng-change="change($index)"> 
-		</li>
-	</ul>
-</form>	
-<div>
-	<ul>
-		<li ng-repeat="n in pokes">
-			{{n.name}}
-		</li>
-	</ul>
-</span>	
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="text-center">Perfect Pokemon Team Rater - PPTR</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-offset-2 col-lg-4">
+			<form name="team" class="form-horizontal">
+				<div ng-repeat="n in pokes" class="form-group" ng-class="n.ajaxReq" >
+					<label for="poke{{$index+1}}" class="col-lg-2 control-label">Pokemon {{n.name}} : </label>
+					<div class="dropdown col-lg-6">
+					<input type="text" name="poke1" ng-model="n.name"  ng-blur="test($index)"  class="dropdown-toggle form-control">
+						<ul class="dropdown-menu">
+							<li ng-repeat="poke in cache_pokes">
+								<a>{{poke.identifier}}</a>
+							</li>
+						</ul>	 
+					</div>
+				</div>
+			</form>	
+		</div>
+		
+	</div>
+</div>
 </body>
 	
 </html>

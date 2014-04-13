@@ -3,9 +3,15 @@
  * Module dependencies.
  */
 
+
 var express = require('express');
 var routes = require('./routes');
 var pokemon = require('./routes/pokemon')
+var settings = require('./settings');
+
+//global. Should be read only.
+
+
 
 var http = require('http');
 var path = require('path');
@@ -24,14 +30,20 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+global.settings = require('./settings');
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
+//console.log(Bookshelf);
+
 //routes
 //app.get('/', routes.index); //info page, landing page etc.
-app.get('/pokemon/:id',pokemon.getPokemon); //this is a proxy that collects pokemon data from PokeAPI. It will show pokedex and pokemon data
+app.get('/pokemon/:id',pokemon.getPokemon); 
+app.get('/cache_pokes',pokemon.cachePokemons);
 
 
 http.createServer(app).listen(app.get('port'), function(){

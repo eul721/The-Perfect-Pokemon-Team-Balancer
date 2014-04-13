@@ -11,6 +11,17 @@ module.exports = function(grunt){
 				files:{
 					'public/libs/angular.js' : ['bower_components/angular/angular.js']
 				}
+			},
+			angular_bootstrap: {
+				files:{
+					'public/libs/angular-bootstrap.js' : ['bower_components/angular-bootstrap/ui-bootstrap.js'],
+					'public/libs/angular-bootstrap-tpls.js' : ['bower_components/angular-bootstrap/ui-bootstrap-tpls.js']
+				}
+			},
+			bootstrap : {
+				files: {
+					'public/stylesheets/bootstrap.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
+				}
 			}
 		},
 		watch: {
@@ -18,6 +29,7 @@ module.exports = function(grunt){
 				files: [
 					'node_modules/**/*.js',
 					'public/**/*',
+					'models/**/*',
 					'routes/**/*',
 					'views/**/*',
 					'models/**/*',
@@ -54,6 +66,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-express-server');
 
-	grunt.registerTask('default',['concat:angular','express:dev','watch']);
+	grunt.registerTask('default',['concat','express:dev','watch']);
 	
 };

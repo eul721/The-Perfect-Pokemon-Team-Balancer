@@ -1,17 +1,16 @@
-var PokemonTeamRater = angular.module('PokemonTeamRater',[]);
+var PokemonTeamRater = angular.module('PokemonTeamRater',['ui.bootstrap']);
 
 PokemonTeamRater.controller('Pokes',function($scope,$http){
-	$http({method:'GET',url:'/pokemon/1'})
-		.success(function(data,status,header,config	){
-			/*console.log('data' + JSON.stringify(data));
-			console.log('status' + JSON.stringify(status));
-			console.log('header' + JSON.stringify(header));
-			console.log('config' + JSON.stringify(config));*/
-
+	
+	$http({method:'GET',url:'/cache_pokes'})
+		.success(function(data,status,header,config){
+			$scope.cache_pokes = data;
+			
 		})
 		.error(function(data,status,header,config){
+			console.error('Error caching pokes')
+		});
 
-		})
 	$scope.pokes = [
 		{'name':null
 		},
@@ -32,17 +31,28 @@ PokemonTeamRater.controller('Pokes',function($scope,$http){
 		},
 	]
 
+	$scope.delayTimer = 0;
+
+	
+	$scope.testing = 'test';
+
+	$scope.testFunc = function(variable){
+		console.log(variable);
+	}
+
 	$scope.change = function(index){
 		console.log($scope.pokes[index].name);
 	}
 	$scope.test = function(index){
+		console.log('name : ' + name);
 		
-		
-		$http({method:'GET',url:'/pokemon/1'})
+		$http({method:'GET',url:'/pokemon/'+$scope.pokes[index].name})
 			.success(function(data,status,header,config){
-				console.log(index);
-				console.log($scope.pokes);
-				$scope.pokes[index].ajaxReq = data;
+				if(data!=='not_found'){
+					$scope.pokes[index].ajaxReq = data;
+					
+				}
+				else $scope.pokes[index].ajaxReq = 'has-error';
 			}).error(function(data,status,header,config){
 
 			})
