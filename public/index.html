@@ -3,9 +3,14 @@
 <head>
 	<script src="libs/angular.js"></script>
 	<script src="libs/angular-bootstrap-tpls.js"></script>
+	<script src="libs/underscore.js"></script>
 	<script src="js/controllers.js"></script>
 	<link href="stylesheets/bootstrap.css" rel="stylesheet">
 </head>
+
+<script>
+	console.log(_.find([1,2],function(num){return num == 1;}));
+</script>
 
 <body ng-controller="Pokes">
 <div class="container-fluid">
@@ -18,12 +23,12 @@
 		<div class="col-lg-offset-2 col-lg-4">
 			<form name="team" class="form-horizontal">
 				<div ng-repeat="n in pokes" class="form-group" ng-class="n.ajaxReq" >
-					<label for="poke{{$index+1}}" class="col-lg-2 control-label">Pokemon {{n.name}} : </label>
+					<label for="poke{{$index+1}}" class="col-lg-2 control-label">Pokemon : </label>
 					<div class="dropdown col-lg-6">
-					<input type="text" name="poke1" ng-model="n.name"  ng-blur="test($index)"  class="dropdown-toggle form-control">
+					<input type="text" name="poke1" ng-model="n.name"  ng-blur="testFunc(n.name)"  class="dropdown-toggle form-control">
 						<ul class="dropdown-menu">
-							<li ng-repeat="poke in cache_pokes">
-								<a>{{poke.identifier}}</a>
+							<li ng-repeat="poke in cache_pokes|filter:n.name">
+								<a ng-click="n.name=poke.identifier">{{poke.identifier}}</a>
 							</li>
 						</ul>	 
 					</div>

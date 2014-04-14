@@ -31,20 +31,20 @@ PokemonTeamRater.controller('Pokes',function($scope,$http){
 		},
 	]
 
-	$scope.delayTimer = 0;
+	
 
 	
 	$scope.testing = 'test';
 
 	$scope.testFunc = function(variable){
-		console.log(variable);
+		console.log($scope.pokes);
 	}
 
 	$scope.change = function(index){
 		console.log($scope.pokes[index].name);
 	}
 	$scope.test = function(index){
-		console.log('name : ' + name);
+		console.log('Pokes' + JSON.stringify($scope.pokes[index]));
 		
 		$http({method:'GET',url:'/pokemon/'+$scope.pokes[index].name})
 			.success(function(data,status,header,config){
@@ -56,5 +56,8 @@ PokemonTeamRater.controller('Pokes',function($scope,$http){
 			}).error(function(data,status,header,config){
 
 			})
+	}
+	$scope.searchForPokeByName = function(pokeName){
+
 	}
 })

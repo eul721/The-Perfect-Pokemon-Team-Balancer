@@ -22,6 +22,11 @@ module.exports = function(grunt){
 				files: {
 					'public/stylesheets/bootstrap.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
 				}
+			},
+			underscore : {
+				files: {
+					'public/libs/underscore.js' : ['bower_components/underscore/underscore.js']
+				}
 			}
 		},
 		watch: {
