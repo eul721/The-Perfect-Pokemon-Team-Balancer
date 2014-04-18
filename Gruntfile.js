@@ -32,12 +32,14 @@ module.exports = function(grunt){
 		watch: {
 			scripts: {
 				files: [
-					'node_modules/**/*.js',
-					'public/**/*',
+					//'node_modules/**/*.js',
+					'public/js/*',
+					'public/stylesheets/*',
+					'public/index.html',
 					'models/**/*',
 					'routes/**/*',
 					'views/**/*',
-					'models/**/*',
+					
 					'app.js'
 				],
 				tasks: ['concat:angular','express:dev'],

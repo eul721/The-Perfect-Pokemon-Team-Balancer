@@ -1,9 +1,12 @@
+var fs = require('fs');
 var request = require('request');
 var sqlite = require('sqlite3').verbose();
 var path = require('path');
 var db = new sqlite.Database(path.join(__dirname , '../libs/pokedex.sqlite'));
 
 var Pokemon = require(__dirname + '/../models/pokemon.js');
+
+var IMGPATH = path.join(__dirname , '../assets/images/pokemon_icons');
 
 //TODO: Require Settings File
 
@@ -51,7 +54,17 @@ var Pokemon = require(__dirname + '/../models/pokemon.js');
  exports.cachePokemons = function(req,res){
  	Pokemon.collection().fetch({withRelated:['abilities','types']}).then(function(collection){
 
- 		console.log(collection);
+ 		//console.log(collection);
  		res.json(collection);
  	})
+ }
+
+ exports.pokemonImg = function(req,res){
+ 	var pokeId = req.params.id;
+ 	var pokeImgPath = path.join(IMGPATH , pokeId + '.png');
+ 	console.log(pokeImgPath);
+ 	if(fs.existsSync(pokeImgPath))
+ 		res.sendfile(pokeImgPath)
+	else
+		res.send(404,'None Existent');
  }

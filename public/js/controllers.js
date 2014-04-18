@@ -71,13 +71,12 @@ PokemonTeamRater.controller('Pokes',function($scope,$http){
 			console.log(element);
 			console.log(attrs);
 			element.bind('focus',function(){
-				$timeout(function(){
-					console.log(element[0].parentNode.className);
-					if(element[0].parentNode.className.indexOf('open') == -1)
-						element[0].click();	
-				},200);
+				if(element[0].parentNode.className.indexOf('open') == -1)
+					element[0].click();	
 				
-			})
+				
+			});
+			
 		}
 	}
 });

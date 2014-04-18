@@ -44,6 +44,7 @@ if ('development' == app.get('env')) {
 //app.get('/', routes.index); //info page, landing page etc.
 app.get('/pokemon/:id',pokemon.getPokemon); 
 app.get('/cache_pokes',pokemon.cachePokemons);
+app.get('/get_pokeImg/:id',pokemon.pokemonImg);
 
 
 http.createServer(app).listen(app.get('port'), function(){

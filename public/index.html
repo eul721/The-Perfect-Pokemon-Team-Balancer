@@ -2,7 +2,7 @@
 <html ng-app="PPTRControllers">
 <head>
 	<script src="libs/angular.js"></script>
-	<script src="libs/angular-bootstrap-tpls.js"></script>
+	<script src="libs/angular-bootstrap.js"></script>
 	<script src="libs/underscore.js"></script>
 
 	<script src="js/app.js"></script>
@@ -28,10 +28,10 @@
 				<div ng-repeat="n in pokes" class="form-group" ng-class="n.ajaxReq" >
 					<label for="poke{{$index+1}}" class="col-lg-2 control-label">Pokemon : </label>
 					<div class="dropdown col-lg-6">
-					<input type="text" name="poke1" ng-model="n.name"  ng-blur="testFunc(n.name)"  class="dropdown-toggle form-control" simulateclick>
+					<input type="text" name="poke1" ng-model="n.name"  ng-blur="testFunc(n.name)"  class="dropdown-toggle form-control" >
 						<ul class="dropdown-menu">
 							<li ng-repeat="poke in cache_pokes|filter:n.name|limitTo:5">
-								<a ng-click="n.name=poke.identifier"><i><img src="/images/pokemon_icons/{{poke.id}}.png"/></i> {{poke.identifier.charAt(0).toUpperCase() + poke.identifier.slice(1)}}</a>
+								<a ng-click="n.name=poke.identifier"><i><img src="/get_pokeImg/{{poke.id}}"/></i> {{poke.identifier.charAt(0).toUpperCase() + poke.identifier.slice(1)}}</a>
 							</li>
 						</ul>	 
 					</div>
