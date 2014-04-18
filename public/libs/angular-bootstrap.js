@@ -1331,9 +1331,8 @@ angular.module('ui.bootstrap.dropdownToggle', []).directive('dropdownToggle', ['
     restrict: 'CA',
     link: function(scope, element, attrs) {
       scope.$watch('$location.path', function() { closeMenu(); });
-      element.parent().bind('blur', function() { closeMenu(); });
+      element.parent().bind('click', function() { closeMenu(); });
       var dropdownEvent = function (event) {
-
         var elementWasOpen = (element === openElement);
 
         event.preventDefault();
@@ -1347,6 +1346,8 @@ angular.module('ui.bootstrap.dropdownToggle', []).directive('dropdownToggle', ['
           element.parent().addClass('open');
           openElement = element;
           closeMenu = function (event) {
+            console.log(event);
+
             if (event) {
               event.preventDefault();
               event.stopPropagation();
@@ -1356,11 +1357,11 @@ angular.module('ui.bootstrap.dropdownToggle', []).directive('dropdownToggle', ['
             closeMenu = angular.noop;
             openElement = null;
           };
-          //$document.bind('click', closeMenu);
-          element.bind('blur',closeMenu);
+          $document.bind('click', closeMenu);
+          //element.bind('blur',closeMenu);
         }
       };
-      element.bind('focus', dropdownEvent);
+      element.bind('click', dropdownEvent);
     }
   };
 }]);
