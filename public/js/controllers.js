@@ -1,4 +1,4 @@
-var PokemonTeamRater = angular.module('PokemonTeamRater',['ui.bootstrap']);
+var PokemonTeamRater = angular.module('PPTRControllers',['ui.bootstrap']);
 
 PokemonTeamRater.controller('Pokes',function($scope,$http){
 	
@@ -60,4 +60,24 @@ PokemonTeamRater.controller('Pokes',function($scope,$http){
 	$scope.searchForPokeByName = function(pokeName){
 
 	}
-})
+}).directive('simulateclick',function($timeout){
+
+
+	return {
+		restrict: 'A',
+
+		link: function($scope,element, attrs){
+			console.log($scope);
+			console.log(element);
+			console.log(attrs);
+			element.bind('focus',function(){
+				$timeout(function(){
+					console.log(element[0].parentNode.className);
+					if(element[0].parentNode.className.indexOf('open') == -1)
+						element[0].click();	
+				},200);
+				
+			})
+		}
+	}
+});
